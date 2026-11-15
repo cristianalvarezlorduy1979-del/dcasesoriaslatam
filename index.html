@@ -1,0 +1,1440 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>DC Asesorías Empresariales — Ecosistema Tecnológico y Financiero</title>
+  <meta name="description" content="Portal central de acceso a las soluciones tecnológicas y de asesoría empresarial de DC Asesorías: DC RestoData, DC Piscícola, DC RedAvicola, DC Inventarios, DC Procesos, DC Moto Taller, DC Enrutador, DC Monitor y DCRestoPOS.">
+  
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="icon" type="image/svg+xml" href="assets/logo.svg">
+
+  <!-- Google Fonts: Inter, Montserrat & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Outfit:wght@500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --bg-body: #f8fafc;
+      --bg-surface: #ffffff;
+      --bg-surface-alt: #f1f5f9;
+      --bg-card: #ffffff;
+      
+      --primary-navy: #0f172a;
+      --primary-indigo: #4338ca;
+      --primary-blue: #2563eb;
+      
+      --accent-gold: #d97706;
+      --accent-gold-light: #f59e0b;
+      --accent-gold-dark: #b45309;
+      
+      --accent-emerald: #059669;
+      --accent-cyan: #0284c7;
+      --accent-blue: #2563eb;
+      --accent-purple: #7c3aed;
+      --accent-orange: #ea580c;
+      --accent-teal: #0d9488;
+      --accent-red: #dc2626;
+      --accent-indigo: #4f46e5;
+      
+      --text-main: #0f172a;
+      --text-body: #334155;
+      --text-muted: #64748b;
+      --text-light: #94a3b8;
+      
+      --border-color: #e2e8f0;
+      --border-subtle: #f1f5f9;
+      --border-card: #e2e8f0;
+      
+      --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 14px rgba(15, 23, 42, 0.05);
+      --shadow-lg: 0 12px 30px rgba(15, 23, 42, 0.08);
+      
+      --font-heading: 'Outfit', sans-serif;
+      --font-body: 'Inter', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: var(--bg-body);
+      color: var(--text-body);
+      font-family: var(--font-body);
+      line-height: 1.6;
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    h1, h2, h3, h4, .brand-logo {
+      font-family: var(--font-heading);
+      color: var(--text-main);
+    }
+
+    .text-gold { color: var(--accent-gold); }
+    .text-emerald { color: var(--accent-emerald); }
+    .text-cyan { color: var(--accent-cyan); }
+    .text-blue { color: var(--accent-blue); }
+    .text-purple { color: var(--accent-purple); }
+    .text-orange { color: var(--accent-orange); }
+    .text-teal { color: var(--accent-teal); }
+    .text-red { color: var(--accent-red); }
+    .text-indigo { color: var(--accent-indigo); }
+
+    /* Barra Superior / Navbar */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--border-color);
+      z-index: 1000;
+      padding: 12px 0;
+      transition: all 0.3s ease;
+      box-shadow: 0 2px 10px rgba(15, 23, 42, 0.03);
+    }
+
+    .nav-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      font-size: 1.35rem;
+      font-weight: 800;
+      white-space: nowrap;
+      color: var(--text-main);
+    }
+
+    .brand-icon {
+      width: 42px;
+      height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+    }
+
+    .brand-logo:hover .brand-icon {
+      transform: scale(1.05);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-body);
+      text-decoration: none;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent-gold);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      white-space: nowrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 9px 18px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      border-radius: 10px;
+      text-decoration: none;
+      transition: all 0.25s ease;
+      cursor: pointer;
+      border: none;
+      white-space: nowrap;
+    }
+
+    .btn-gold {
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(217, 119, 6, 0.25);
+    }
+
+    .btn-gold:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(217, 119, 6, 0.35);
+      background: linear-gradient(135deg, #fbbf24, #d97706);
+    }
+
+    .btn-outline {
+      background: #ffffff;
+      color: var(--text-main);
+      border: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-outline:hover {
+      background: var(--bg-surface-alt);
+      border-color: #cbd5e1;
+      transform: translateY(-2px);
+    }
+
+    .btn-whatsapp {
+      background: #25d366;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(37, 211, 102, 0.25);
+    }
+
+    .btn-whatsapp:hover {
+      background: #20ba59;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(37, 211, 102, 0.35);
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: 125px 0 45px;
+      text-align: center;
+      background: radial-gradient(circle at 50% 12%, rgba(217, 119, 6, 0.06) 0%, rgba(248, 250, 252, 1) 70%);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 16px;
+      background: #ffffff;
+      border: 1px solid #fde68a;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-gold-dark);
+      margin-bottom: 20px;
+      box-shadow: 0 2px 8px rgba(217, 119, 6, 0.08);
+    }
+
+    .hero-title {
+      font-size: 3.1rem;
+      font-weight: 900;
+      line-height: 1.15;
+      letter-spacing: -0.03em;
+      max-width: 980px;
+      margin: 0 auto 18px;
+      color: var(--text-main);
+    }
+
+    .hero-title span {
+      background: linear-gradient(135deg, #0f172a 30%, #d97706 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .hero-desc {
+      font-size: 1.12rem;
+      color: var(--text-muted);
+      max-width: 780px;
+      margin: 0 auto 42px;
+      line-height: 1.6;
+    }
+
+    /* Stats Bar */
+    .stats-bar {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 18px;
+      padding: 24px;
+      max-width: 1080px;
+      margin: 0 auto;
+      text-align: left;
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 6px 12px;
+      border-right: 1px solid var(--border-color);
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-icon {
+      font-size: 1.8rem;
+    }
+
+    .stat-number {
+      font-size: 1.55rem;
+      font-weight: 800;
+      color: var(--text-main);
+      line-height: 1.1;
+      font-family: var(--font-heading);
+    }
+
+    .stat-label {
+      font-size: 0.80rem;
+      color: var(--text-muted);
+      font-weight: 600;
+      margin-top: 3px;
+    }
+
+    /* Filtro de Categorías */
+    .filter-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 26px;
+    }
+
+    .filter-btn {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      color: var(--text-body);
+      padding: 7px 16px;
+      border-radius: 30px;
+      font-size: 0.82rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .filter-btn:hover {
+      background: var(--bg-surface-alt);
+      border-color: #cbd5e1;
+      color: var(--text-main);
+    }
+
+    .filter-btn.active {
+      background: #0f172a;
+      color: #ffffff;
+      border-color: #0f172a;
+      box-shadow: 0 4px 14px rgba(15, 23, 42, 0.2);
+    }
+
+    /* Cuadrícula de Plataformas (Ecosistema) */
+    .platforms-section {
+      padding: 45px 0 75px;
+    }
+
+    .section-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 24px;
+    }
+
+    .section-tag {
+      font-size: 0.78rem;
+      font-weight: 800;
+      color: var(--accent-gold);
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 6px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .section-desc {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+    }
+
+    .platforms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .platform-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 20px 22px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      transition: all 0.25s cubic-bezier(0.165, 0.84, 0.44, 1);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .platform-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-lg);
+      border-color: #cbd5e1;
+    }
+
+    .platform-card.gold-theme:hover { border-color: #f59e0b; box-shadow: 0 10px 25px rgba(245, 158, 11, 0.15); }
+    .platform-card.cyan-theme:hover { border-color: #06b6d4; box-shadow: 0 10px 25px rgba(6, 182, 212, 0.15); }
+    .platform-card.emerald-theme:hover { border-color: #10b981; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.15); }
+    .platform-card.blue-theme:hover { border-color: #3b82f6; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.15); }
+    .platform-card.purple-theme:hover { border-color: #8b5cf6; box-shadow: 0 10px 25px rgba(139, 92, 246, 0.15); }
+    .platform-card.orange-theme:hover { border-color: #f97316; box-shadow: 0 10px 25px rgba(249, 115, 22, 0.15); }
+    .platform-card.teal-theme:hover { border-color: #14b8a6; box-shadow: 0 10px 25px rgba(20, 184, 166, 0.15); }
+    .platform-card.indigo-theme:hover { border-color: #6366f1; box-shadow: 0 10px 25px rgba(99, 102, 241, 0.15); }
+    .platform-card.red-theme:hover { border-color: #ef4444; box-shadow: 0 10px 25px rgba(239, 68, 68, 0.15); }
+
+    .platform-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .platform-icon-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.3rem;
+    }
+
+    .icon-gold { background: #fffbeb; border: 1px solid #fde68a; color: #d97706; }
+    .icon-cyan { background: #ecfeff; border: 1px solid #a5f3fc; color: #0284c7; }
+    .icon-emerald { background: #ecfdf5; border: 1px solid #a7f3d0; color: #059669; }
+    .icon-blue { background: #eff6ff; border: 1px solid #bfdbfe; color: #2563eb; }
+    .icon-purple { background: #f5f3ff; border: 1px solid #ddd6fe; color: #7c3aed; }
+    .icon-orange { background: #fff7ed; border: 1px solid #fed7aa; color: #ea580c; }
+    .icon-teal { background: #f0fdfa; border: 1px solid #99f6e4; color: #0d9488; }
+    .icon-indigo { background: #eef2ff; border: 1px solid #c7d2fe; color: #4f46e5; }
+    .icon-red { background: #fef2f2; border: 1px solid #fecaca; color: #dc2626; }
+
+    .platform-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      padding: 3px 9px;
+      border-radius: 16px;
+      background: #f0fdf4;
+      border: 1px solid #bbf7d0;
+      color: #15803d;
+    }
+
+    .status-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #16a34a;
+      box-shadow: 0 0 6px #86efac;
+    }
+
+    .platform-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      margin-bottom: 2px;
+      line-height: 1.25;
+      color: var(--text-main);
+    }
+
+    .platform-subtitle {
+      font-size: 0.74rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .platform-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.48;
+      margin-bottom: 12px;
+      flex-grow: 1;
+    }
+
+    .platform-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+      margin-bottom: 0;
+      border-top: 1px solid var(--border-color);
+      padding-top: 10px;
+    }
+
+    .platform-features li {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      font-size: 0.80rem;
+      color: var(--text-body);
+      line-height: 1.35;
+    }
+
+    .platform-features li i {
+      font-size: 0.72rem;
+      flex-shrink: 0;
+    }
+
+    /* Sección de Consultoría */
+    .services-section {
+      padding: 70px 0;
+      background: var(--bg-surface-alt);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .service-card {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 16px;
+      padding: 26px;
+      transition: all 0.25s ease;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .service-card:hover {
+      border-color: #cbd5e1;
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .service-icon {
+      font-size: 1.8rem;
+      color: var(--accent-gold);
+      margin-bottom: 14px;
+    }
+
+    .service-title {
+      font-size: 1.18rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: var(--text-main);
+    }
+
+    .service-desc {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+
+    /* Cotizador / Contacto Asistido */
+    .cotizador-section {
+      padding: 75px 0;
+    }
+
+    .cotizador-box {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      padding: 40px;
+      box-shadow: var(--shadow-md);
+    }
+
+    .cotizador-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .form-group {
+      margin-bottom: 16px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-main);
+      margin-bottom: 6px;
+    }
+
+    .form-control {
+      width: 100%;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 12px 14px;
+      color: var(--text-main);
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      transition: all 0.2s;
+    }
+
+    .form-control:focus {
+      outline: none;
+      background: #ffffff;
+      border-color: var(--accent-gold);
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
+    }
+
+    /* Modal de Acceso a Clientes */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(15, 23, 42, 0.5);
+      backdrop-filter: blur(6px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+
+    .modal-overlay.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-content {
+      background: #ffffff;
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      max-width: 680px;
+      width: 100%;
+      padding: 30px;
+      box-shadow: 0 20px 50px rgba(15, 23, 42, 0.15);
+      position: relative;
+      animation: modalSlide 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    @keyframes modalSlide {
+      from { transform: translateY(20px) scale(0.97); }
+      to { transform: translateY(0) scale(1); }
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 14px;
+    }
+
+    .modal-close {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-size: 1.3rem;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+
+    .modal-close:hover {
+      color: var(--text-main);
+    }
+
+    .modal-app-list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .modal-app-item:last-child:nth-child(odd) {
+      grid-column: 1 / -1;
+    }
+
+    .modal-app-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 14px;
+      border-radius: 12px;
+      background: #f8fafc;
+      border: 1px solid var(--border-color);
+      text-decoration: none;
+      color: var(--text-main);
+      transition: all 0.2s ease;
+    }
+
+    .modal-app-item:hover {
+      background: #f1f5f9;
+      border-color: #cbd5e1;
+      transform: translateX(3px);
+    }
+
+    .modal-app-item i, .modal-app-item svg {
+      font-size: 1.25rem;
+      width: 24px;
+      text-align: center;
+    }
+
+    .modal-app-info h4 {
+      font-size: 0.92rem;
+      margin-bottom: 2px;
+      color: var(--text-main);
+    }
+
+    .modal-app-info p {
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    /* Floating WhatsApp */
+    .floating-whatsapp {
+      position: fixed;
+      bottom: 26px;
+      right: 26px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #25d366;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 28px;
+      box-shadow: 0 8px 24px rgba(37, 211, 102, 0.4);
+      z-index: 999;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .floating-whatsapp:hover {
+      transform: scale(1.1);
+      box-shadow: 0 12px 30px rgba(37, 211, 102, 0.55);
+    }
+
+    /* Footer */
+    footer {
+      background: #ffffff;
+      border-top: 1px solid var(--border-color);
+      padding: 40px 0 30px;
+      text-align: center;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      margin-top: auto;
+    }
+
+    footer a {
+      color: var(--accent-gold);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    @media (max-width: 992px) {
+      .hero-title { font-size: 2.4rem; }
+      .stats-bar { grid-template-columns: repeat(2, 1fr); }
+      .stat-item:nth-child(2) { border-right: none; }
+      .services-grid, .cotizador-grid { grid-template-columns: 1fr; }
+      .modal-app-list { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .hero-title { font-size: 1.95rem; }
+      .stats-bar { grid-template-columns: 1fr; }
+      .stat-item { border-right: none; border-bottom: 1px solid var(--border-color); padding-bottom: 12px; }
+      .stat-item:last-child { border-bottom: none; }
+      .nav-links { display: none; }
+      .nav-actions span.btn-label { display: none; }
+      .nav-actions .btn { padding: 8px 12px; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ======================================================================
+       NAVBAR SUPERIOR CORPORATIVO
+       ====================================================================== -->
+  <nav class="navbar">
+    <div class="container nav-inner">
+      <a href="index.html" class="brand-logo">
+        <div class="brand-icon">
+          <svg viewBox="0 0 120 120" width="100%" height="100%" style="display:block;">
+            <defs>
+              <linearGradient id="navGoldText1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fffbeb" />
+                <stop offset="35%" stop-color="#fbbf24" />
+                <stop offset="100%" stop-color="#d97706" />
+              </linearGradient>
+              <linearGradient id="navBgBox1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#12243d" />
+                <stop offset="100%" stop-color="#07111e" />
+              </linearGradient>
+              <linearGradient id="navBorderGold1" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#fde047" />
+                <stop offset="50%" stop-color="#f59e0b" />
+                <stop offset="100%" stop-color="#b45309" />
+              </linearGradient>
+              <filter id="navShadow1" x="-20%" y="-20%" width="140%" height="140%">
+                <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#f59e0b" flood-opacity="0.35" />
+              </filter>
+            </defs>
+            <rect x="8" y="8" width="104" height="104" rx="22" fill="url(#navBgBox1)" stroke="url(#navBorderGold1)" stroke-width="2.5" filter="url(#navShadow1)"/>
+            <rect x="14" y="14" width="92" height="92" rx="16" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+            <text x="60" y="73" font-family="'Montserrat', 'Outfit', 'Inter', 'Segoe UI', Arial, sans-serif" font-weight="900" font-size="46" letter-spacing="3" fill="url(#navGoldText1)" text-anchor="middle">DC</text>
+            <rect x="36" y="84" width="48" height="3" rx="1.5" fill="url(#navGoldText1)"/>
+          </svg>
+        </div>
+        <span>DC ASESORÍAS</span>
+      </a>
+
+      <ul class="nav-links">
+        <li><a href="#plataformas">Plataformas</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#cotizador">Solicitar Asesoría</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <button onclick="openModal()" class="btn btn-gold" title="Abrir selector de plataformas">
+          <i class="fa-solid fa-grid-2"></i>
+          <span class="btn-label">Acceso Clientes</span>
+        </button>
+        <a href="https://wa.me/573165443285?text=Hola%20DC%20Asesor%C3%ADas,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20plataformas" target="_blank" class="btn btn-whatsapp" title="WhatsApp Oficial">
+          <i class="fa-brands fa-whatsapp"></i>
+          <span class="btn-label">316 544 3285</span>
+        </a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ======================================================================
+       HERO / BIENVENIDA AL ECOSISTEMA
+       ====================================================================== -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">
+        <i class="fa-solid fa-shield-halved text-gold"></i>
+        <span>Portal Oficial Corporativo • DC Asesorías Empresariales</span>
+      </div>
+
+      <h1 class="hero-title">
+        Bienvenido al Ecosistema Tecnológico y Financiero de<br>
+        <span>DC Asesorías Empresariales</span>
+      </h1>
+
+      <p class="hero-desc">
+        La suite de plataformas cloud donde convergen la ingeniería de costos, el control operativo y la rentabilidad empresarial.
+      </p>
+
+      <!-- Barra de Métricas y Estadísticas Corporativas -->
+      <div class="stats-bar">
+        <div class="stat-item">
+          <i class="fa-solid fa-calculator stat-icon text-gold"></i>
+          <div>
+            <div class="stat-number">+99.8%</div>
+            <div class="stat-label">Precisión en Arqueos y P&L</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fa-solid fa-chart-line-down stat-icon text-emerald"></i>
+          <div>
+            <div class="stat-number">15% - 22%</div>
+            <div class="stat-label">Reducción de Mermas Industriales</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fa-solid fa-server stat-icon text-cyan"></i>
+          <div>
+            <div class="stat-number">9 Soluciones</div>
+            <div class="stat-label">Sistemas Cloud & POS</div>
+          </div>
+        </div>
+        <div class="stat-item">
+          <i class="fa-solid fa-cloud stat-icon text-purple"></i>
+          <div>
+            <div class="stat-number">24/7 Cloud</div>
+            <div class="stat-label">Google Cloud & Firestore</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       CUADRÍCULA DE PLATAFORMAS (ECOSISTEMA DC)
+       ====================================================================== -->
+  <section class="platforms-section" id="plataformas">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Nuestras Soluciones SaaS</span>
+        <h2 class="section-title">Ecosistema de Plataformas Especializadas</h2>
+        <p class="section-desc">Herramientas en la nube diseñadas para responder a los desafíos operacionales y financieros reales de cada industria.</p>
+      </div>
+
+      <!-- Filtro por Industria -->
+      <div class="filter-wrapper">
+        <button class="filter-btn active" onclick="filterCategory('all', this)">
+          <i class="fa-solid fa-border-all"></i> Todas las Plataformas
+        </button>
+        <button class="filter-btn" onclick="filterCategory('gastronomia', this)">
+          <i class="fa-solid fa-utensils"></i> Gastronomía & Bares
+        </button>
+        <button class="filter-btn" onclick="filterCategory('piscicola', this)">
+          <i class="fa-solid fa-fish"></i> Acuicultura & Peces
+        </button>
+        <button class="filter-btn" onclick="filterCategory('avicola', this)">
+          <svg viewBox="0 0 24 24" width="14" height="14" fill="currentColor" style="display:inline-block; vertical-align:-2px;"><path d="M19.5 8c-.3 0-.6.1-.9.3-.4-.7-1.1-1.2-1.9-1.3-.2-.5-.5-1-.9-1.4-.8-.8-1.9-1.2-3.1-1-1-.8-2.3-1.1-3.6-.8-1.5.3-2.7 1.4-3.2 2.8-.7.2-1.3.7-1.7 1.3-.4.7-.5 1.5-.3 2.3L2 11.2l2.4 1.2c.1.6.4 1.2.8 1.7.3.4.7.7 1.1 1-.3 1.1-.3 2.2 0 3.3.5 2 2 3.6 4 4.3L10 23h2l.5-1.3c.5.1 1 .1 1.5.1s1 0 1.5-.1L16 23h2l-.7-1.3c2-.7 3.5-2.3 4-4.3.3-1.4.2-2.8-.4-4 1.3-1 2.1-2.5 2.1-4.2 0-.6-.1-1.1-.3-1.6-.2-.4-.6-.6-1-.6-.2 0-.4.1-.6.2-.9.7-2 1.1-3.1 1.1-.1-.6-.4-1.1-.8-1.6-.5-.5-1.1-.8-1.7-.9zM7.5 8c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/></svg> Avícola & Galpones
+        </button>
+        <button class="filter-btn" onclick="filterCategory('inventarios', this)">
+          <i class="fa-solid fa-boxes-stacked"></i> Inventarios & Producción
+        </button>
+        <button class="filter-btn" onclick="filterCategory('logistica', this)">
+          <i class="fa-solid fa-truck-fast"></i> Logística & Enrutador
+        </button>
+        <button class="filter-btn" onclick="filterCategory('taller', this)">
+          <i class="fa-solid fa-motorcycle"></i> Talleres & Motos
+        </button>
+        <button class="filter-btn" onclick="filterCategory('pos', this)">
+          <i class="fa-solid fa-tower-broadcast"></i> Conectividad & POS
+        </button>
+      </div>
+
+      <div class="platforms-grid">
+        
+        <!-- 1. DC RESTODATA -->
+        <div class="platform-card gold-theme" data-category="gastronomia">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-gold">
+              <i class="fa-solid fa-utensils"></i>
+            </div>
+            <div class="platform-status">
+              <span class="status-dot"></span>
+              <span>Cloud Activo v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DC RestoData</h3>
+          <span class="platform-subtitle text-gold">Sector Gastronómico y Financiero</span>
+          <p class="platform-desc">
+            Auditoría de ventas diarias, cuadre automático de medios de pago, P&L gerencial en tiempo real, recetario con fichas técnicas y cotizador financiero de eventos.
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-gold"></i> 17 Módulos de Control Operativo y Costos</li>
+            <li><i class="fa-solid fa-check text-gold"></i> Recetario con Fichas Técnicas Dinámicas</li>
+            <li><i class="fa-solid fa-check text-gold"></i> Cotizador Financiero de Platos y Banquetes</li>
+            <li><i class="fa-solid fa-check text-gold"></i> Sincronización Automática con Soft Restaurant</li>
+          </ul>
+        </div>
+
+        <!-- 2. DC PISCÍCOLA -->
+        <div class="platform-card cyan-theme" data-category="piscicola">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-cyan">
+              <i class="fa-solid fa-fish"></i>
+            </div>
+            <div class="platform-status" style="background: rgba(6, 182, 212, 0.12); border-color: rgba(6, 182, 212, 0.3); color: var(--accent-cyan);">
+              <span class="status-dot" style="background: var(--accent-cyan); box-shadow: 0 0 8px var(--accent-cyan);"></span>
+              <span>Cloud Activo v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DC Piscícola</h3>
+          <span class="platform-subtitle text-cyan">Acuicultura y Producción de Peces</span>
+          <p class="platform-desc">
+            Control integral de biometrías, curvas de crecimiento, cálculo de factores de conversión alimenticia (FCR), mortalidad, insumos y rentabilidad estanque por estanque.
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-cyan"></i> Registro de Biometrías y Muestreos Semanales</li>
+            <li><i class="fa-solid fa-check text-cyan"></i> Tablas y Control de Raciones de Alimento</li>
+            <li><i class="fa-solid fa-check text-cyan"></i> Análisis de Conversión y Costo por Kilo Producido</li>
+            <li><i class="fa-solid fa-check text-cyan"></i> Proyección de Cosechas y Rendimientos</li>
+          </ul>
+        </div>
+
+        <!-- 3. DC REDAVICOLA -->
+        <div class="platform-card emerald-theme" data-category="avicola">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-emerald">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M19.5 8c-.3 0-.6.1-.9.3-.4-.7-1.1-1.2-1.9-1.3-.2-.5-.5-1-.9-1.4-.8-.8-1.9-1.2-3.1-1-1-.8-2.3-1.1-3.6-.8-1.5.3-2.7 1.4-3.2 2.8-.7.2-1.3.7-1.7 1.3-.4.7-.5 1.5-.3 2.3L2 11.2l2.4 1.2c.1.6.4 1.2.8 1.7.3.4.7.7 1.1 1-.3 1.1-.3 2.2 0 3.3.5 2 2 3.6 4 4.3L10 23h2l.5-1.3c.5.1 1 .1 1.5.1s1 0 1.5-.1L16 23h2l-.7-1.3c2-.7 3.5-2.3 4-4.3.3-1.4.2-2.8-.4-4 1.3-1 2.1-2.5 2.1-4.2 0-.6-.1-1.1-.3-1.6-.2-.4-.6-.6-1-.6-.2 0-.4.1-.6.2-.9.7-2 1.1-3.1 1.1-.1-.6-.4-1.1-.8-1.6-.5-.5-1.1-.8-1.7-.9zM7.5 8c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/>
+              </svg>
+            </div>
+            <div class="platform-status">
+              <span class="status-dot"></span>
+              <span>Cloud Activo v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DC RedAvicola</h3>
+          <span class="platform-subtitle text-emerald">Galpones de Engorde & Trazabilidad</span>
+          <p class="platform-desc">
+            Gestión integral de granjas y galpones de engorde con trazabilidad total del ave. Control estricto de mortalidad diaria, curvas de peso, consumo de alimento, raciones de agua y factor de conversión alimenticia (FCR).
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-emerald"></i> Arquitectura Multi-Empresa con Aislamiento Total</li>
+            <li><i class="fa-solid fa-check text-emerald"></i> Control Diario de Mortandad y Consumo de Alimento</li>
+            <li><i class="fa-solid fa-check text-emerald"></i> Curvas de Crecimiento y Factor de Conversión (FCR)</li>
+            <li><i class="fa-solid fa-check text-emerald"></i> Historial de Pesajes, Sanidad y Costeo por Lote</li>
+          </ul>
+        </div>
+
+        <!-- 4. DC INVENTARIOS -->
+        <div class="platform-card teal-theme" data-category="inventarios gastronomia pos">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-teal">
+              <i class="fa-solid fa-boxes-stacked"></i>
+            </div>
+            <div class="platform-status" style="background: rgba(20, 184, 166, 0.12); border-color: rgba(20, 184, 166, 0.35); color: #14b8a6;">
+              <span class="status-dot" style="background: #14b8a6; box-shadow: 0 0 8px #14b8a6;"></span>
+              <span>Cloud Activo v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DC Inventarios</h3>
+          <span class="platform-subtitle text-teal">Kardex Valorizado & Control de Producción</span>
+          <p class="platform-desc">
+            Sistema profesional de inventarios y control de procesos bajo metodología de Costo Promedio Ponderado (CPP). Trazabilidad de materia prima, balance de masa, gestión de recetas con mermas, multi-bodega y sincronización con puntos de venta POS.
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-teal"></i> Kardex Contable Formal (Entradas, Salidas y Saldos CPP)</li>
+            <li><i class="fa-solid fa-check text-teal"></i> Fichas Técnicas, Escandallos (BOM) y Mermas de Producción</li>
+            <li><i class="fa-solid fa-check text-teal"></i> Control Multi-Bodega, Lotes y Trazabilidad Operativa</li>
+            <li><i class="fa-solid fa-check text-teal"></i> Descargo Automático de Insumos por Ventas POS</li>
+          </ul>
+        </div>
+
+        <!-- 5. DC PROCESOS -->
+        <div class="platform-card indigo-theme" data-category="inventarios">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-indigo">
+              <i class="fa-solid fa-industry"></i>
+            </div>
+            <div class="platform-status" style="background: rgba(99, 102, 241, 0.12); border-color: rgba(99, 102, 241, 0.35); color: #6366f1;">
+              <span class="status-dot" style="background: #6366f1; box-shadow: 0 0 8px #6366f1;"></span>
+              <span>PWA & Móvil v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DC Procesos</h3>
+          <span class="platform-subtitle text-indigo">Control de Producción & Rendimientos en Planta</span>
+          <p class="platform-desc">
+            Aplicación progresiva web y móvil para operarios y supervisores en planta. Registro táctil de órdenes de producción del día, rendimientos cárnicos, pesaje de subproductos (hueso, grasa, sangre) y cálculo exacto de mermas operativas.
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-indigo"></i> Modo Celular y Táctil para Operarios de Línea</li>
+            <li><i class="fa-solid fa-check text-indigo"></i> Control de Órdenes del Día (Pendientes, En Proceso, Fin)</li>
+            <li><i class="fa-solid fa-check text-indigo"></i> Registro de Subproductos (Hueso, Sangre, Grasa y Mermas)</li>
+            <li><i class="fa-solid fa-check text-indigo"></i> Sincronización en Vivo con Firebase y Pantalla Central</li>
+          </ul>
+        </div>
+
+        <!-- 6. DC ENRUTADOR -->
+        <div class="platform-card blue-theme" data-category="logistica">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-blue">
+              <i class="fa-solid fa-route"></i>
+            </div>
+            <div class="platform-status" style="background: rgba(59, 130, 246, 0.12); border-color: rgba(59, 130, 246, 0.3); color: var(--accent-blue);">
+              <span class="status-dot" style="background: var(--accent-blue); box-shadow: 0 0 8px var(--accent-blue);"></span>
+              <span>Cloud Activo v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DC Enrutador</h3>
+          <span class="platform-subtitle text-blue">Planificación Logística y Despachos</span>
+          <p class="platform-desc">
+            Organización y armado inteligente de rutas del día, secuenciación de paradas por cercanía o sector y cálculo óptimo de recorridos para reducir costos y kilometraje de flota.
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-blue"></i> Planificación y Secuenciación Óptima de Paradas</li>
+            <li><i class="fa-solid fa-check text-blue"></i> Asignación Dinámica de Clientes y Pedidos</li>
+            <li><i class="fa-solid fa-check text-blue"></i> Integración y Trazabilidad con Google Maps</li>
+            <li><i class="fa-solid fa-check text-blue"></i> Ahorro Directo en Combustible y Tiempos de Entrega</li>
+          </ul>
+        </div>
+
+        <!-- 7. DC MOTO TALLER -->
+        <div class="platform-card red-theme" data-category="taller pos">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-red">
+              <i class="fa-solid fa-motorcycle"></i>
+            </div>
+            <div class="platform-status" style="background: rgba(239, 68, 68, 0.12); border-color: rgba(239, 68, 68, 0.35); color: #ef4444;">
+              <span class="status-dot" style="background: #ef4444; box-shadow: 0 0 8px #ef4444;"></span>
+              <span>Cloud & Android v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DC Moto Taller</h3>
+          <span class="platform-subtitle text-red">Gestión de Taller Mecánico & Repuestos</span>
+          <p class="platform-desc">
+            Sistema integral para talleres de motocicletas y venta de repuestos. Recepción de vehículos con órdenes de servicio digitales, control de mecánicos, catálogo de repuestos con inventario, facturación de mano de obra e impresión de tickets.
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-red"></i> Órdenes de Servicio y Trazabilidad por Placa/Cliente</li>
+            <li><i class="fa-solid fa-check text-red"></i> Punto de Venta (POS) de Repuestos y Mano de Obra</li>
+            <li><i class="fa-solid fa-check text-red"></i> Liquidación de Comisiones a Mecánicos por Trabajo</li>
+            <li><i class="fa-solid fa-check text-red"></i> Impresión Térmica de Tickets y App Móvil Android</li>
+          </ul>
+        </div>
+
+        <!-- 8. DC MONITOR -->
+        <div class="platform-card purple-theme" data-category="gastronomia pos">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-purple">
+              <i class="fa-solid fa-tower-broadcast"></i>
+            </div>
+            <div class="platform-status" style="background: rgba(139, 92, 246, 0.12); border-color: rgba(139, 92, 246, 0.3); color: var(--accent-purple);">
+              <span class="status-dot" style="background: var(--accent-purple); box-shadow: 0 0 8px var(--accent-purple);"></span>
+              <span>Render Cloud v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DC Monitor</h3>
+          <span class="platform-subtitle text-purple">Agente POS & Monitoreo en Tiempo Real</span>
+          <p class="platform-desc">
+            Vigilante y agente en la nube de sincronización continua para puntos de venta POS (Soft Restaurant, etc.), auditoría automática de cierres de turno, conectividad de base de datos y monitoreo de operaciones.
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-purple"></i> Conector y Agente Cloud POS en Tiempo Real</li>
+            <li><i class="fa-solid fa-check text-purple"></i> Vigilante Automático de Cierres de Turno y Ventas</li>
+            <li><i class="fa-solid fa-check text-purple"></i> Sincronización Segura sin Intervención Manual</li>
+            <li><i class="fa-solid fa-check text-purple"></i> Estado de Conectividad y Alertas de Servidor</li>
+          </ul>
+        </div>
+
+        <!-- 9. DCRESTOPOS (PRÓXIMAMENTE) -->
+        <div class="platform-card orange-theme" data-category="gastronomia pos">
+          <div class="platform-top">
+            <div class="platform-icon-wrap icon-orange">
+              <i class="fa-solid fa-cash-register"></i>
+            </div>
+            <div class="platform-status" style="background: rgba(249, 115, 22, 0.12); border-color: rgba(249, 115, 22, 0.35); color: #f97316;">
+              <span class="status-dot" style="background: #f97316; box-shadow: 0 0 8px #f97316;"></span>
+              <span>Próximamente v1.0</span>
+            </div>
+          </div>
+          <h3 class="platform-title">DCRestoPOS</h3>
+          <span class="platform-subtitle text-orange">Punto de Venta & Comandero Gastronómico</span>
+          <p class="platform-desc">
+            Sistema ágil de punto de venta (POS) en la nube para restaurantes, bares y cafeterías. Facturación rápida, gestión de mesas, comandas digitales a cocina y sincronización nativa con el recetario y costeo de DC RestoData.
+          </p>
+          <ul class="platform-features">
+            <li><i class="fa-solid fa-check text-orange"></i> Facturación Táctil Ultrarrápida y Cuentas de Mesa</li>
+            <li><i class="fa-solid fa-check text-orange"></i> Comandero Digital de Cocina y Bar en Tiempo Real</li>
+            <li><i class="fa-solid fa-check text-orange"></i> Descuento Automático de Inventarios por Receta</li>
+            <li><i class="fa-solid fa-check text-orange"></i> Integración Total con DC RestoData y DC Monitor</li>
+          </ul>
+        </div>
+
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       SERVICIOS DE ASESORÍA Y CONSULTORÍA
+       ====================================================================== -->
+  <section class="services-section" id="servicios">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Acompañamiento Estratégico</span>
+        <h2 class="section-title">Servicios Profesionales de DC Asesorías</h2>
+        <p class="section-desc">Combinamos software propio con experiencia financiera y contable directa en tu negocio.</p>
+      </div>
+
+      <div class="services-grid">
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-scale-balanced"></i></div>
+          <h3 class="service-title">Auditoría Financiera y Contable</h3>
+          <p class="service-desc">
+            Revisión exhaustiva de ingresos, costos, egresos y arqueos de caja para erradicar fugas de capital y garantizar estados de resultados reales.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-chart-pie"></i></div>
+          <h3 class="service-title">Ingeniería de Costos y Recetas</h3>
+          <p class="service-desc">
+            Estandarización de fichas técnicas para gastronomía, manufactura o piscicultura, blindando el margen de ganancia ante variaciones de materia prima.
+          </p>
+        </div>
+
+        <div class="service-card">
+          <div class="service-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <h3 class="service-title">Desarrollo de Software a la Medida</h3>
+          <p class="service-desc">
+            Creación e integración de sistemas cloud, conectores de bases de datos POS (Soft Restaurant, etc.) y automatización de procesos empresariales.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       COTIZADOR / CONTACTO INTERACTIVO
+       ====================================================================== -->
+  <section class="cotizador-section" id="cotizador">
+    <div class="container">
+      <div class="cotizador-box">
+        <div class="cotizador-grid">
+          <div>
+            <span class="section-tag">Contacto Directo</span>
+            <h2 style="font-size: 2.2rem; margin-bottom: 14px;">¿Listo para optimizar la rentabilidad de tu empresa?</h2>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;">
+              Selecciona la plataforma o servicio en el que tienes interés y genera una solicitud formal para coordinar una demostración guiada o diagnóstico inicial con nuestros consultores.
+            </p>
+            <div style="display:flex; flex-direction:column; gap:12px;">
+              <div style="display:flex; align-items:center; gap:12px;">
+                <i class="fa-solid fa-circle-check text-gold"></i>
+                <span>Atención y asesoría 100% personalizada</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <i class="fa-solid fa-circle-check text-gold"></i>
+                <span>Demostración en vivo de las plataformas Cloud</span>
+              </div>
+              <div style="display:flex; align-items:center; gap:12px;">
+                <i class="fa-solid fa-circle-check text-gold"></i>
+                <span>Soporte técnico y capacitación continua</span>
+              </div>
+            </div>
+          </div>
+
+          <div style="background: #f8fafc; padding: 30px; border-radius: 18px; border: 1px solid var(--border-color);">
+            <div class="form-group">
+              <label class="form-label">Solución o Plataforma de Interés</label>
+              <select id="cotizPlataforma" class="form-control">
+                <option value="DC RestoData">🍽️ DC RestoData (Gastronomía & Costos)</option>
+                <option value="DC Piscícola">🐟 DC Piscícola (Acuicultura & FCR)</option>
+                <option value="DC RedAvicola">🐔 DC RedAvicola (Galpones & Trazabilidad)</option>
+                <option value="DC Inventarios">📦 DC Inventarios (Kardex Valorizado)</option>
+                <option value="DC Procesos">🏭 DC Procesos (Producción en Planta & Mermas)</option>
+                <option value="DC Enrutador">🚚 DC Enrutador (Planificación de Rutas)</option>
+                <option value="DC Moto Taller">🏍️ DC Moto Taller (Gestión de Taller & Repuestos)</option>
+                <option value="DC Monitor">📡 DC Monitor (Agente POS & Conectividad)</option>
+                <option value="DCRestoPOS (Próximamente)">🚀 DCRestoPOS (Punto de Venta - Próximamente)</option>
+                <option value="Auditoría Financiera y de Costos">💼 Auditoría Financiera y Contable</option>
+                <option value="Desarrollo a la Medida">💻 Desarrollo de Software a la Medida</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Nombre del Contacto / Empresa</label>
+              <input type="text" id="cotizNombre" class="form-control" placeholder="Ej. Carlos Martínez - Empresa SAS">
+            </div>
+
+            <div class="form-group">
+              <label class="form-label">Ciudad / Ubicación</label>
+              <input type="text" id="cotizCiudad" class="form-control" placeholder="Ej. Bogotá, Medellín, Cali...">
+            </div>
+
+            <button onclick="enviarCotizacionWhatsApp()" class="btn btn-whatsapp" style="width: 100%; padding: 13px; font-size: 1rem; margin-top: 10px;">
+              <i class="fa-brands fa-whatsapp"></i>
+              <span>Solicitar Demostración por WhatsApp</span>
+            </button>
+            <p style="text-align: center; font-size: 0.78rem; color: var(--text-muted); margin-top: 10px;">
+              Se abrirá WhatsApp directamente con tu solicitud prellenada.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ======================================================================
+       MODAL DE ACCESO RÁPIDO A PLATAFORMAS (CLIENTES)
+       ====================================================================== -->
+  <div class="modal-overlay" id="modalAcceso" onclick="cerrarModalFondo(event)">
+    <div class="modal-content">
+      <div class="modal-header">
+        <div style="display:flex; align-items:center; gap:12px;">
+          <div class="brand-icon" style="width:38px; height:38px;">
+            <svg viewBox="0 0 120 120" width="100%" height="100%">
+              <rect x="8" y="8" width="104" height="104" rx="22" fill="#12243d" stroke="#f59e0b" stroke-width="3"/>
+              <text x="60" y="73" font-family="'Montserrat', 'Outfit', sans-serif" font-weight="900" font-size="46" letter-spacing="3" fill="#f59e0b" text-anchor="middle">DC</text>
+              <rect x="36" y="84" width="48" height="3" rx="1.5" fill="#f59e0b"/>
+            </svg>
+          </div>
+          <div>
+            <h3 style="font-size:1.2rem;">Portal de Acceso a Clientes</h3>
+            <p style="font-size:0.80rem; color:var(--text-muted);">Selecciona la plataforma a la que deseas ingresar:</p>
+          </div>
+        </div>
+        <button class="modal-close" onclick="closeModal()"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+
+      <div class="modal-app-list">
+        <a href="https://dcasesorias-col.web.app" target="_blank" class="modal-app-item">
+          <i class="fa-solid fa-utensils text-gold"></i>
+          <div class="modal-app-info">
+            <h4>DC RestoData</h4>
+            <p>Auditoría y Costeo Gastronómico</p>
+          </div>
+        </a>
+
+        <a href="https://dc-piscicola-pro.web.app" target="_blank" class="modal-app-item">
+          <i class="fa-solid fa-fish text-cyan"></i>
+          <div class="modal-app-info">
+            <h4>DC Piscícola</h4>
+            <p>Biometrías y Producción Acuícola</p>
+          </div>
+        </a>
+
+        <a href="https://dc-redavicola.web.app" target="_blank" class="modal-app-item">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" class="text-emerald" style="width:24px; text-align:center;"><path d="M19.5 8c-.3 0-.6.1-.9.3-.4-.7-1.1-1.2-1.9-1.3-.2-.5-.5-1-.9-1.4-.8-.8-1.9-1.2-3.1-1-1-.8-2.3-1.1-3.6-.8-1.5.3-2.7 1.4-3.2 2.8-.7.2-1.3.7-1.7 1.3-.4.7-.5 1.5-.3 2.3L2 11.2l2.4 1.2c.1.6.4 1.2.8 1.7.3.4.7.7 1.1 1-.3 1.1-.3 2.2 0 3.3.5 2 2 3.6 4 4.3L10 23h2l.5-1.3c.5.1 1 .1 1.5.1s1 0 1.5-.1L16 23h2l-.7-1.3c2-.7 3.5-2.3 4-4.3.3-1.4.2-2.8-.4-4 1.3-1 2.1-2.5 2.1-4.2 0-.6-.1-1.1-.3-1.6-.2-.4-.6-.6-1-.6-.2 0-.4.1-.6.2-.9.7-2 1.1-3.1 1.1-.1-.6-.4-1.1-.8-1.6-.5-.5-1.1-.8-1.7-.9zM7.5 8c-.6 0-1-.4-1-1s.4-1 1-1 1 .4 1 1-.4 1-1 1z"/></svg>
+          <div class="modal-app-info">
+            <h4>DC RedAvicola</h4>
+            <p>Galpones y Trazabilidad Avícola</p>
+          </div>
+        </a>
+
+        <a href="https://dc-inventarios-pro.web.app" target="_blank" class="modal-app-item">
+          <i class="fa-solid fa-boxes-stacked" style="color: #14b8a6;"></i>
+          <div class="modal-app-info">
+            <h4>DC Inventarios</h4>
+            <p>Kardex Valorizado & CPP</p>
+          </div>
+        </a>
+
+        <a href="https://dc-procesos-app.web.app" target="_blank" class="modal-app-item">
+          <i class="fa-solid fa-industry text-indigo"></i>
+          <div class="modal-app-info">
+            <h4>DC Procesos</h4>
+            <p>Control de Producción en Planta</p>
+          </div>
+        </a>
+
+        <a href="https://enrutador-pro-col.web.app" target="_blank" class="modal-app-item">
+          <i class="fa-solid fa-route text-blue"></i>
+          <div class="modal-app-info">
+            <h4>DC Enrutador</h4>
+            <p>Planificación de Rutas</p>
+          </div>
+        </a>
+
+        <a href="https://taller-motopro-app.web.app" target="_blank" class="modal-app-item">
+          <i class="fa-solid fa-motorcycle" style="color: #ef4444;"></i>
+          <div class="modal-app-info">
+            <h4>DC Moto Taller</h4>
+            <p>Taller Mecánico & Repuestos</p>
+          </div>
+        </a>
+
+        <a href="https://dc-agente-pos.onrender.com/" target="_blank" class="modal-app-item">
+          <i class="fa-solid fa-tower-broadcast text-purple"></i>
+          <div class="modal-app-info">
+            <h4>DC Monitor</h4>
+            <p>Agente POS & Conectividad en Vivo</p>
+          </div>
+        </a>
+
+        <div class="modal-app-item" style="border-color: #fed7aa; background: #fff7ed; cursor: default;">
+          <i class="fa-solid fa-cash-register" style="color: #ea580c;"></i>
+          <div class="modal-app-info">
+            <h4 style="display:flex; align-items:center; gap:6px;">
+              DCRestoPOS 
+              <span style="font-size:0.68rem; background:#ffedd5; color:#ea580c; border: 1px solid #fed7aa; padding:1px 6px; border-radius:6px; font-weight:700;">Próximamente</span>
+            </h4>
+            <p>Punto de Venta Gastronómico</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Botón Flotante de WhatsApp -->
+  <a href="https://wa.me/573165443285?text=Hola%20DC%20Asesor%C3%ADas,%20deseo%20m%C3%A1s%20informaci%C3%B3n%20sobre%20sus%20plataformas" target="_blank" class="floating-whatsapp" title="Contactar a DC Asesorías por WhatsApp">
+    <i class="fa-brands fa-whatsapp"></i>
+  </a>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p style="margin-bottom: 8px;"><strong>DC Asesorías Empresariales</strong> — Suite Tecnológica, Financiera y Operativa.</p>
+      <p>Canales oficiales: <a href="https://wa.me/573165443285" target="_blank">WhatsApp (+57 316 544 3285)</a> &bull; <a href="mailto:dcasesoriascol@gmail.com">dcasesoriascol@gmail.com</a> &bull; Todos los derechos reservados.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Filtro interactivo de plataformas
+    function filterCategory(category, btnElement) {
+      document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+      btnElement.classList.add('active');
+
+      const cards = document.querySelectorAll('.platform-card');
+      cards.forEach(card => {
+        const cats = (card.getAttribute('data-category') || '').split(' ');
+        if (category === 'all' || cats.includes(category)) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    }
+
+    // Modal de Acceso
+    function openModal() {
+      document.getElementById('modalAcceso').classList.add('active');
+    }
+
+    function closeModal() {
+      document.getElementById('modalAcceso').classList.remove('active');
+    }
+
+    function cerrarModalFondo(event) {
+      if (event.target.id === 'modalAcceso') {
+        closeModal();
+      }
+    }
+
+    // Cotizador / Contacto por WhatsApp
+    function enviarCotizacionWhatsApp() {
+      const plat = document.getElementById('cotizPlataforma').value;
+      const nom = document.getElementById('cotizNombre').value.trim();
+      const ciudad = document.getElementById('cotizCiudad').value.trim();
+
+      let msg = `Hola DC Asesorías, estoy interesado en recibir información y demostración de: *${plat}*.`;
+      if (nom) msg += ` Mi nombre / empresa es: *${nom}*.`;
+      if (ciudad) msg += ` Ciudad: *${ciudad}*.`;
+
+      const url = `https://wa.me/573165443285?text=${encodeURIComponent(msg)}`;
+      window.open(url, '_blank');
+    }
+
+    // Cerrar modal con tecla ESC
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape') closeModal();
+    });
+  </script>
+
+</body>
+</html>
