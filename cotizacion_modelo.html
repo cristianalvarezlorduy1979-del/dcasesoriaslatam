@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plantilla Corporativa y Cotizador — DC Asesorías Empresariales</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Montserrat:wght@700;800;900&family=Outfit:wght@600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- FontAwesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <style>
+    :root {
+      --primary-navy: #0b192c;
+      --primary-dark: #070f1e;
+      --accent-gold: #f59e0b;
+      --accent-gold-dark: #b45309;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --bg-light: #f8fafc;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background-color: #0f172a;
+      color: var(--text-main);
+      font-family: 'Inter', -apple-system, sans-serif;
+      padding: 24px 16px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Barra de Herramientas Superior (No imprimible) */
+    .toolbar {
+      width: 100%;
+      max-width: 850px;
+      background: #1e293b;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 14px;
+      padding: 14px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .toolbar-title {
+      color: #fff;
+      font-size: 0.95rem;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toolbar-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .btn-action {
+      background: linear-gradient(135deg, var(--accent-gold), #d97706);
+      color: #0b192c;
+      font-weight: 800;
+      border: none;
+      padding: 9px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
+    }
+
+    .btn-action:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(245, 158, 11, 0.45);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.08);
+      color: #f1f5f9;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      font-weight: 600;
+      padding: 9px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+    }
+
+    /* Hoja Tamaño Carta (A4 / Letter) */
+    .page-letter {
+      width: 100%;
+      max-width: 850px;
+      min-height: 1100px;
+      background: #ffffff;
+      border-radius: 4px;
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.45);
+      padding: 55px 65px;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    /* Elementos Editables */
+    [contenteditable="true"] {
+      outline: none;
+      transition: background 0.2s, box-shadow 0.2s;
+      border-radius: 3px;
+      padding: 1px 4px;
+    }
+
+    [contenteditable="true"]:hover {
+      background: rgba(245, 158, 11, 0.06);
+    }
+
+    [contenteditable="true"]:focus {
+      background: rgba(245, 158, 11, 0.12);
+      box-shadow: 0 0 0 1.5px var(--accent-gold);
+    }
+
+    /* ENCABEZADO CORPORATIVO */
+    .header-section {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      border-bottom: 2.5px solid var(--primary-navy);
+      padding-bottom: 22px;
+      margin-bottom: 30px;
+      position: relative;
+    }
+
+    .header-section::after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 140px;
+      height: 3.5px;
+      background: linear-gradient(90deg, var(--accent-gold), transparent);
+    }
+
+    .brand-wrap {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .brand-logo-img {
+      width: 60px;
+      height: 60px;
+      flex-shrink: 0;
+    }
+
+    .brand-text h1 {
+      font-family: 'Outfit', sans-serif;
+      font-size: 1.45rem;
+      font-weight: 900;
+      color: var(--primary-navy);
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+    }
+
+    .brand-text p {
+      font-size: 0.80rem;
+      font-weight: 700;
+      color: var(--accent-gold-dark);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-top: 3px;
+    }
+
+    .meta-box {
+      text-align: right;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    .doc-type-badge {
+      display: inline-block;
+      background: var(--primary-navy);
+      color: #fff;
+      font-size: 0.82rem;
+      font-weight: 800;
+      padding: 4px 14px;
+      border-radius: 6px;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+      text-transform: uppercase;
+    }
+
+    .meta-ref {
+      font-weight: 700;
+      color: var(--primary-navy);
+      font-size: 0.95rem;
+    }
+
+    /* INFORMACIÓN DEL CLIENTE & FECHA */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+      background: var(--bg-light);
+      border: 1px solid var(--border-color);
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+    }
+
+    .info-col h4 {
+      font-size: 0.72rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: var(--accent-gold-dark);
+      letter-spacing: 0.08em;
+      margin-bottom: 6px;
+    }
+
+    .info-col p {
+      font-size: 0.88rem;
+      color: var(--text-main);
+      line-height: 1.45;
+    }
+
+    /* CUERPO DE LA CARTA / PROPUESTA */
+    .letter-body {
+      font-size: 0.93rem;
+      line-height: 1.7;
+      color: #334155;
+      margin-bottom: 26px;
+    }
+
+    .letter-body p {
+      margin-bottom: 14px;
+      text-align: justify;
+    }
+
+    .letter-greeting {
+      font-weight: 600;
+      color: var(--primary-navy);
+      margin-bottom: 12px;
+    }
+
+    /* TABLA DE COTIZACIÓN / SERVICIOS */
+    .table-wrap {
+      margin: 22px 0 26px;
+      overflow-x: auto;
+    }
+
+    .quote-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+    }
+
+    .quote-table th {
+      background: var(--primary-navy);
+      color: #ffffff;
+      padding: 11px 14px;
+      text-align: left;
+      font-weight: 700;
+      font-size: 0.80rem;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    .quote-table th:last-child {
+      text-align: right;
+    }
+
+    .quote-table td {
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-color);
+      color: #1e293b;
+      vertical-align: top;
+    }
+
+    .quote-table td:last-child {
+      text-align: right;
+      font-weight: 600;
+    }
+
+    .quote-table tr:last-child td {
+      border-bottom: 2px solid var(--primary-navy);
+    }
+
+    .item-title {
+      font-weight: 700;
+      color: var(--primary-navy);
+      display: block;
+      margin-bottom: 2px;
+    }
+
+    .item-desc {
+      font-size: 0.80rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    /* TOTALES */
+    .totals-area {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 28px;
+    }
+
+    .totals-box {
+      width: 280px;
+    }
+
+    .total-row {
+      display: flex;
+      justify-content: space-between;
+      padding: 6px 0;
+      font-size: 0.88rem;
+      color: var(--text-muted);
+    }
+
+    .total-row.final {
+      border-top: 2px solid var(--primary-navy);
+      padding-top: 10px;
+      margin-top: 6px;
+      font-size: 1.15rem;
+      font-weight: 900;
+      color: var(--primary-navy);
+    }
+
+    .total-row.final span:last-child {
+      color: var(--accent-gold-dark);
+    }
+
+    /* CONDICIONES COMERCIALES */
+    .terms-box {
+      background: #fafaf9;
+      border-left: 3px solid var(--accent-gold);
+      padding: 12px 16px;
+      border-radius: 0 8px 8px 0;
+      margin-bottom: 30px;
+      font-size: 0.80rem;
+      color: #57534e;
+      line-height: 1.5;
+    }
+
+    .terms-box h5 {
+      font-size: 0.76rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--primary-navy);
+      margin-bottom: 4px;
+    }
+
+    .terms-box ul {
+      padding-left: 18px;
+    }
+
+    /* SECCIÓN DE FIRMAS */
+    .signature-section {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 50px;
+      margin-top: 30px;
+      padding-top: 10px;
+    }
+
+    .sign-block {
+      border-top: 1.5px solid #cbd5e1;
+      padding-top: 10px;
+      font-size: 0.85rem;
+    }
+
+    .sign-name {
+      font-weight: 800;
+      color: var(--primary-navy);
+      font-size: 0.95rem;
+      margin-bottom: 2px;
+    }
+
+    .sign-role {
+      color: var(--accent-gold-dark);
+      font-weight: 700;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    .sign-company {
+      color: var(--text-muted);
+      font-size: 0.80rem;
+    }
+
+    /* PIE DE PÁGINA CORPORATIVO */
+    .footer-section {
+      border-top: 1px solid var(--border-color);
+      padding-top: 18px;
+      margin-top: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 0.76rem;
+      color: var(--text-muted);
+    }
+
+    .footer-contacts {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .footer-contacts span {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .footer-contacts i {
+      color: var(--accent-gold-dark);
+    }
+
+    /* REGLAS PARA IMPRESIÓN / EXPORTACIÓN A PDF */
+    @media print {
+      body {
+        background: transparent !important;
+        padding: 0 !important;
+      }
+
+      .toolbar {
+        display: none !important;
+      }
+
+      .page-letter {
+        box-shadow: none !important;
+        border-radius: 0 !important;
+        padding: 40px 45px !important;
+        max-width: 100% !important;
+        min-height: 100vh !important;
+      }
+
+      [contenteditable="true"] {
+        outline: none !important;
+        background: transparent !important;
+        box-shadow: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- BARRA DE ACCIONES (NO SALE EN IMPRESIÓN) -->
+  <div class="toolbar">
+    <div class="toolbar-title">
+      <i class="fa-solid fa-file-invoice text-amber-400"></i>
+      <span>Plantilla Corporativa Oficial — DC Asesorías Empresariales</span>
+    </div>
+    <div class="toolbar-actions">
+      <button class="btn-secondary" onclick="addRow()">
+        <i class="fa-solid fa-plus"></i>
+        <span>Agregar Fila</span>
+      </button>
+      <button class="btn-action" onclick="window.print()">
+        <i class="fa-solid fa-print"></i>
+        <span>Imprimir o Guardar PDF</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- DOCUMENTO TAMAÑO CARTA -->
+  <div class="page-letter" id="documento">
+
+    <div>
+      <!-- ENCABEZADO -->
+      <header class="header-section">
+        <div class="brand-wrap">
+          <!-- Logo Oficial SVG con letras DC -->
+          <div class="brand-logo-img">
+            <svg viewBox="0 0 120 120" width="100%" height="100%">
+              <defs>
+                <linearGradient id="goldText1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fffbeb" />
+                  <stop offset="35%" stop-color="#fbbf24" />
+                  <stop offset="100%" stop-color="#d97706" />
+                </linearGradient>
+                <linearGradient id="bgBox1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#12243d" />
+                  <stop offset="100%" stop-color="#07111e" />
+                </linearGradient>
+                <linearGradient id="borderGold1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#fde047" />
+                  <stop offset="50%" stop-color="#f59e0b" />
+                  <stop offset="100%" stop-color="#b45309" />
+                </linearGradient>
+              </defs>
+              <rect x="8" y="8" width="104" height="104" rx="22" fill="url(#bgBox1)" stroke="url(#borderGold1)" stroke-width="2.5"/>
+              <rect x="14" y="14" width="92" height="92" rx="16" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+              <text x="60" y="73" font-family="'Montserrat', 'Outfit', sans-serif" font-weight="900" font-size="46" letter-spacing="3" fill="url(#goldText1)" text-anchor="middle">DC</text>
+              <rect x="36" y="84" width="48" height="3" rx="1.5" fill="url(#goldText1)"/>
+            </svg>
+          </div>
+          <div class="brand-text">
+            <h1 contenteditable="true">DC ASESORÍAS</h1>
+            <p contenteditable="true">Tecnología &bull; Finanzas &bull; Operaciones</p>
+          </div>
+        </div>
+
+        <div class="meta-box">
+          <div class="doc-type-badge" contenteditable="true">Propuesta Comercial</div>
+          <div>Ref: <span class="meta-ref" contenteditable="true">COT-2026-001</span></div>
+          <div>Fecha: <span contenteditable="true" id="fechaDoc">Noviembre 3, 2026</span></div>
+          <div>Válida hasta: <span contenteditable="true">Noviembre 18, 2026</span></div>
+        </div>
+      </header>
+
+      <!-- CUADRO DE CLIENTE -->
+      <section class="info-grid">
+        <div class="info-col">
+          <h4>Datos del Cliente / Destinatario</h4>
+          <p><strong contenteditable="true">Restaurante & Bar El Gran Sabor S.A.S.</strong></p>
+          <p contenteditable="true">Atn: Juan Carlos Pérez — Gerente General</p>
+          <p contenteditable="true">NIT: 901.458.789-2</p>
+          <p contenteditable="true">Bogotá D.C., Colombia</p>
+        </div>
+        <div class="info-col">
+          <h4>Emitido por</h4>
+          <p><strong contenteditable="true">DC Asesorías Empresariales</strong></p>
+          <p contenteditable="true">Consultor Líder: Cristian Álvarez</p>
+          <p contenteditable="true">WhatsApp: +57 316 544 3285</p>
+          <p contenteditable="true">dcasesoriascol@gmail.com</p>
+        </div>
+      </section>
+
+      <!-- INTRODUCCIÓN / OBJETO -->
+      <section class="letter-body">
+        <p class="letter-greeting" contenteditable="true">Estimado(a) Juan Carlos,</p>
+        <p contenteditable="true">
+          Reciba un cordial saludo de parte del equipo de <strong>DC Asesorías Empresariales</strong>. Conforme a las conversaciones sostenidas y a la evaluación de las necesidades operativas de su negocio, nos complace presentarle nuestra propuesta técnico-económica para la implementación de soluciones tecnológicas e ingeniería de costos.
+        </p>
+        <p contenteditable="true">
+          Nuestro propósito es dotar a su empresa de herramientas cloud de alta precisión que optimicen sus márgenes de ganancia, reduzcan mermas y brinden control financiero riguroso en tiempo real.
+        </p>
+      </section>
+
+      <!-- TABLA DE VALORIZACIÓN / COTIZACIÓN -->
+      <div class="table-wrap">
+        <table class="quote-table" id="tablaItems">
+          <thead>
+            <tr>
+              <th style="width: 8%;">Ítem</th>
+              <th style="width: 52%;">Descripción del Servicio / Solución</th>
+              <th style="width: 15%; text-align: center;">Cantidad</th>
+              <th style="width: 25%;">Valor (COP)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td contenteditable="true">01</td>
+              <td>
+                <span class="item-title" contenteditable="true">Suscripción Anual — Plataforma DC Restaurantes</span>
+                <span class="item-desc" contenteditable="true">Módulo P&L en tiempo real, cuadre de caja diario, 17 herramientas de auditoría y sincronización POS.</span>
+              </td>
+              <td style="text-align: center;" contenteditable="true">1 Licencia</td>
+              <td contenteditable="true" onblur="recalcularTotales()">$ 1.800.000</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">02</td>
+              <td>
+                <span class="item-title" contenteditable="true">Implementación — DC Inventarios (Kardex Valorizado)</span>
+                <span class="item-desc" contenteditable="true">Configuración multi-almacén, recetario con factor de mermas (BOM) y costo promedio ponderado (CPP).</span>
+              </td>
+              <td style="text-align: center;" contenteditable="true">1 Módulo</td>
+              <td contenteditable="true" onblur="recalcularTotales()">$ 1.200.000</td>
+            </tr>
+            <tr>
+              <td contenteditable="true">03</td>
+              <td>
+                <span class="item-title" contenteditable="true">Auditoría Financiera & Estandarización de Fichas Técnicas</span>
+                <span class="item-desc" contenteditable="true">Acompañamiento presencial/remoto de 30 días para costeo real de carta y erradicación de fugas de dinero.</span>
+              </td>
+              <td style="text-align: center;" contenteditable="true">1 Proyecto</td>
+              <td contenteditable="true" onblur="recalcularTotales()">$ 950.000</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- TOTALES -->
+      <div class="totals-area">
+        <div class="totals-box">
+          <div class="total-row">
+            <span>Subtotal:</span>
+            <span id="subtotalVal" contenteditable="true">$ 3.950.000</span>
+          </div>
+          <div class="total-row">
+            <span>Descuento Comercial:</span>
+            <span id="descuentoVal" contenteditable="true" onblur="recalcularTotales()">$ 0</span>
+          </div>
+          <div class="total-row final">
+            <span>TOTAL:</span>
+            <span id="totalVal" contenteditable="true">$ 3.950.000</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TÉRMINOS & CONDICIONES -->
+      <section class="terms-box">
+        <h5 contenteditable="true">Términos Comerciales y Forma de Pago:</h5>
+        <ul>
+          <li contenteditable="true"><strong>Forma de pago:</strong> 50% al iniciar la implementación y 50% a la entrega y puesta en producción.</li>
+          <li contenteditable="true"><strong>Tiempos de entrega:</strong> 10 a 15 días hábiles a partir de la firma de aceptación y entrega de información inicial.</li>
+          <li contenteditable="true"><strong>Soporte incluido:</strong> Acompañamiento prioritario y soporte técnico continuo vía WhatsApp y correo corporativo.</li>
+          <li contenteditable="true"><strong>Validez de la oferta:</strong> 15 días calendario a partir de la fecha de expedición.</li>
+        </ul>
+      </section>
+
+      <!-- FIRMAS -->
+      <section class="signature-section">
+        <div class="sign-block">
+          <div class="sign-name" contenteditable="true">Cristian Álvarez Lorduy</div>
+          <div class="sign-role" contenteditable="true">Dirección de Consultoría & Tecnología</div>
+          <div class="sign-company" contenteditable="true">DC Asesorías Empresariales</div>
+        </div>
+        <div class="sign-block">
+          <div class="sign-name" contenteditable="true">Aceptado por el Cliente</div>
+          <div class="sign-role" contenteditable="true">Firma & Sello de Autorización</div>
+          <div class="sign-company" contenteditable="true">Fecha de Aceptación: ____ / ____ / 2026</div>
+        </div>
+      </section>
+    </div>
+
+    <!-- PIE DE PÁGINA -->
+    <footer class="footer-section">
+      <div class="footer-contacts">
+        <span><i class="fa-brands fa-whatsapp"></i> +57 316 544 3285</span>
+        <span><i class="fa-solid fa-envelope"></i> dcasesoriascol@gmail.com</span>
+        <span><i class="fa-solid fa-globe"></i> www.asesoriascol.com</span>
+      </div>
+      <div>
+        <span>Página 1 de 1</span>
+      </div>
+    </footer>
+
+  </div>
+
+  <script>
+    // Establecer fecha de hoy automáticamente si se desea
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    // document.getElementById('fechaDoc').innerText = new Date().toLocaleDateString('es-ES', options);
+
+    // Función para agregar filas dinámicas
+    function addRow() {
+      const table = document.getElementById('tablaItems').getElementsByTagName('tbody')[0];
+      const rowCount = table.rows.length + 1;
+      const formattedNum = rowCount < 10 ? '0' + rowCount : rowCount;
+      
+      const newRow = table.insertRow();
+      newRow.innerHTML = `
+        <td contenteditable="true">${formattedNum}</td>
+        <td>
+          <span class="item-title" contenteditable="true">Nuevo Servicio / Producto</span>
+          <span class="item-desc" contenteditable="true">Descripción detallada del alcance o especificaciones.</span>
+        </td>
+        <td style="text-align: center;" contenteditable="true">1 Unid</td>
+        <td contenteditable="true" onblur="recalcularTotales()">$ 0</td>
+      `;
+    }
+
+    // Recalcular totales básicos a partir del texto
+    function recalcularTotales() {
+      const table = document.getElementById('tablaItems').getElementsByTagName('tbody')[0];
+      let sum = 0;
+      
+      for (let i = 0; i < table.rows.length; i++) {
+        let cellText = table.rows[i].cells[3].innerText;
+        let cleanNumber = parseFloat(cellText.replace(/[^0-9]/g, '')) || 0;
+        sum += cleanNumber;
+      }
+
+      let descText = document.getElementById('descuentoVal').innerText;
+      let cleanDesc = parseFloat(descText.replace(/[^0-9]/g, '')) || 0;
+      let finalTotal = Math.max(0, sum - cleanDesc);
+
+      const formatter = new Intl.NumberFormat('es-CO', {
+        style: 'currency',
+        currency: 'COP',
+        maximumFractionDigits: 0
+      });
+
+      document.getElementById('subtotalVal').innerText = formatter.format(sum);
+      document.getElementById('totalVal').innerText = formatter.format(finalTotal);
+    }
+  </script>
+
+</body>
+</html>
