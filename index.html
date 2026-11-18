@@ -593,6 +593,35 @@
       align-items: center;
     }
 
+    .cotizador-title {
+      font-size: 2.2rem;
+      margin-bottom: 14px;
+      color: var(--text-main);
+    }
+
+    .cotizador-desc {
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .cotizador-form-card {
+      background: #f8fafc;
+      padding: 30px;
+      border-radius: 18px;
+      border: 1px solid var(--border-color);
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    .cotizador-btn {
+      width: 100%;
+      padding: 13px;
+      font-size: 1rem;
+      margin-top: 10px;
+      white-space: normal;
+    }
+
     .form-group {
       margin-bottom: 16px;
     }
@@ -607,6 +636,7 @@
 
     .form-control {
       width: 100%;
+      max-width: 100%;
       background: #f8fafc;
       border: 1px solid var(--border-color);
       border-radius: 10px;
@@ -615,6 +645,13 @@
       font-family: var(--font-body);
       font-size: 0.92rem;
       transition: all 0.2s;
+      box-sizing: border-box;
+    }
+
+    select.form-control {
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
     }
 
     .form-control:focus {
@@ -886,6 +923,57 @@
         border-radius: 16px;
         max-height: 92vh;
         overflow-y: auto;
+      }
+      .cotizador-section {
+        padding: 34px 0 44px;
+      }
+      .cotizador-box {
+        padding: 20px 14px;
+        border-radius: 16px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .cotizador-grid {
+        gap: 22px;
+        width: 100%;
+      }
+      .cotizador-title {
+        font-size: 1.45rem !important;
+        line-height: 1.25;
+        margin-bottom: 10px !important;
+        word-break: break-word;
+      }
+      .cotizador-desc {
+        font-size: 0.90rem !important;
+        margin-bottom: 16px !important;
+        line-height: 1.5;
+      }
+      .cotizador-form-card {
+        padding: 16px 12px;
+        border-radius: 14px;
+        width: 100%;
+        box-sizing: border-box;
+      }
+      .cotizador-btn {
+        padding: 12px 10px !important;
+        font-size: 0.88rem !important;
+        line-height: 1.35;
+        white-space: normal !important;
+      }
+      .services-section {
+        padding: 34px 0;
+      }
+      .service-card {
+        padding: 18px 14px;
+      }
+      footer {
+        padding: 28px 14px 85px;
+        font-size: 0.82rem;
+        line-height: 1.6;
+        word-break: break-word;
+      }
+      footer p {
+        word-break: break-word;
       }
     }
 
@@ -1309,8 +1397,8 @@
         <div class="cotizador-grid">
           <div>
             <span class="section-tag">Contacto Directo</span>
-            <h2 style="font-size: 2.2rem; margin-bottom: 14px;">¿Listo para optimizar la rentabilidad de tu empresa?</h2>
-            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 24px;">
+            <h2 class="cotizador-title">¿Listo para optimizar la rentabilidad de tu empresa?</h2>
+            <p class="cotizador-desc">
               Selecciona la plataforma o servicio en el que tienes interés y genera una solicitud formal para coordinar una demostración guiada o diagnóstico inicial con nuestros consultores.
             </p>
             <div style="display:flex; flex-direction:column; gap:12px;">
@@ -1329,7 +1417,7 @@
             </div>
           </div>
 
-          <div style="background: #f8fafc; padding: 30px; border-radius: 18px; border: 1px solid var(--border-color);">
+          <div class="cotizador-form-card">
             <div class="form-group">
               <label class="form-label">Solución o Plataforma de Interés</label>
               <select id="cotizPlataforma" class="form-control">
@@ -1357,7 +1445,7 @@
               <input type="text" id="cotizCiudad" class="form-control" placeholder="Ej. Bogotá, Medellín, Cali...">
             </div>
 
-            <button onclick="enviarCotizacionWhatsApp()" class="btn btn-whatsapp" style="width: 100%; padding: 13px; font-size: 1rem; margin-top: 10px;">
+            <button onclick="enviarCotizacionWhatsApp()" class="btn btn-whatsapp cotizador-btn">
               <i class="fa-brands fa-whatsapp"></i>
               <span>Solicitar Demostración por WhatsApp</span>
             </button>
