@@ -1,37 +1,44 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%">
   <defs>
-    <linearGradient id="goldText1" x1="0%" y1="0%" x2="100%" y2="100%">
+    <linearGradient id="shieldGoldGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#fffbeb" />
       <stop offset="35%" stop-color="#fbbf24" />
-      <stop offset="100%" stop-color="#d97706" />
+      <stop offset="70%" stop-color="#d97706" />
+      <stop offset="100%" stop-color="#92400e" />
     </linearGradient>
-    <linearGradient id="bgBox1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#12243d" />
-      <stop offset="100%" stop-color="#07111e" />
+    <linearGradient id="shieldBgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#111d33" />
+      <stop offset="100%" stop-color="#070d18" />
     </linearGradient>
-    <linearGradient id="borderGold1" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#fde047" />
-      <stop offset="50%" stop-color="#f59e0b" />
-      <stop offset="100%" stop-color="#b45309" />
-    </linearGradient>
-    <filter id="shadow1" x="-20%" y="-20%" width="140%" height="140%">
-      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#f59e0b" flood-opacity="0.35" />
+    <filter id="shieldShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="#f59e0b" flood-opacity="0.38" />
     </filter>
   </defs>
 
-  <!-- Contenedor Cuadrado Redondeado Ejecutivo -->
-  <rect x="8" y="8" width="104" height="104" rx="22" fill="url(#bgBox1)" stroke="url(#borderGold1)" stroke-width="2.5" filter="url(#shadow1)"/>
-  <rect x="14" y="14" width="92" height="92" rx="16" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1.2"/>
+  <!-- Escudo Diamante Hexagonal de Precisión & Blindaje -->
+  <polygon points="60,8 106,34 106,86 60,112 14,86 14,34" 
+           fill="url(#shieldBgGrad)" 
+           stroke="url(#shieldGoldGrad)" 
+           stroke-width="3" 
+           stroke-linejoin="round"
+           filter="url(#shieldShadow)"/>
 
-  <!-- Letras D C 100% Claras y Legibles -->
-  <text x="60" y="73" 
+  <!-- Línea interior de precisión técnica -->
+  <polygon points="60,17 98,39 98,81 60,103 22,81 22,39" 
+           fill="none" 
+           stroke="rgba(245, 158, 11, 0.4)" 
+           stroke-width="1.2" 
+           stroke-linejoin="round"/>
+
+  <!-- Punto diamante superior de auditoría -->
+  <circle cx="60" cy="23" r="2.8" fill="#fde047"/>
+
+  <!-- Iniciales DC con tipografía sólida ejecutiva -->
+  <text x="60" y="74" 
         font-family="'Montserrat', 'Outfit', 'Inter', 'Segoe UI', Arial, sans-serif" 
         font-weight="900" 
-        font-size="46" 
-        letter-spacing="3" 
-        fill="url(#goldText1)" 
+        font-size="45" 
+        letter-spacing="2" 
+        fill="url(#shieldGoldGrad)" 
         text-anchor="middle">DC</text>
-
-  <!-- Barra de Acento Dorado de Prestigio -->
-  <rect x="36" y="84" width="48" height="3" rx="1.5" fill="url(#goldText1)"/>
 </svg>
