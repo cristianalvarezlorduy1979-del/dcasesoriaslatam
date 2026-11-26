@@ -768,23 +768,26 @@
       background: #ffffff;
       border: 1px solid var(--border-color);
       border-radius: 24px;
-      max-width: 500px;
+      max-width: 720px;
       width: 100%;
       padding: 0;
       box-shadow: 0 25px 60px rgba(15, 23, 42, 0.25);
       position: relative;
       overflow: hidden;
       animation: modalSlide 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      text-rendering: optimizeLegibility;
     }
 
     @keyframes modalSlide {
-      from { transform: translateY(20px) scale(0.97); }
+      from { transform: translateY(16px) scale(0.98); }
       to { transform: translateY(0) scale(1); }
     }
 
     /* Modal Top Bar */
     .modal-top-bar {
-      padding: 18px 22px;
+      padding: 18px 26px;
       background: #f8fafc;
       border-bottom: 1px solid var(--border-color);
       display: flex;
@@ -799,40 +802,42 @@
     }
 
     .modal-shield-icon {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       flex-shrink: 0;
     }
 
     .modal-brand-titles h3 {
       font-family: var(--font-heading);
-      font-size: 1.05rem;
-      font-weight: 900;
-      color: var(--primary-navy);
-      letter-spacing: 0.5px;
+      font-size: 1.15rem;
+      font-weight: 800;
+      color: #0f172a;
+      letter-spacing: 0.8px;
       line-height: 1.15;
     }
 
     .modal-brand-titles p {
-      font-size: 0.65rem;
+      font-family: var(--font-body);
+      font-size: 0.70rem;
       font-weight: 800;
-      color: var(--accent-gold);
+      color: #b45309;
       letter-spacing: 2px;
       text-transform: uppercase;
-      margin-top: 1px;
+      margin-top: 2px;
     }
 
     .modal-close-btn {
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       border: 1px solid var(--border-color);
       background: #ffffff;
-      color: var(--text-muted);
+      color: #64748b;
       cursor: pointer;
       display: flex;
       align-items: center;
       justify-content: center;
+      font-size: 0.95rem;
       transition: all 0.2s;
     }
 
@@ -844,7 +849,7 @@
 
     /* Modal Body */
     .modal-body {
-      padding: 22px;
+      padding: 24px 26px;
       position: relative;
     }
 
@@ -857,25 +862,34 @@
     }
 
     .step-intro {
-      margin-bottom: 16px;
+      margin-bottom: 18px;
     }
 
     .step-intro h4 {
-      font-size: 1rem;
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
       font-weight: 800;
-      color: var(--primary-navy);
+      color: #0f172a;
       margin-bottom: 4px;
+      letter-spacing: -0.2px;
     }
 
     .step-intro p {
-      font-size: 0.82rem;
-      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: #334155;
+      line-height: 1.45;
     }
 
     .platform-cards-list {
-      display: flex;
-      flex-direction: column;
-      gap: 10px;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 12px;
+    }
+
+    .platform-card-btn.full-span {
+      grid-column: 1 / -1;
     }
 
     .platform-card-btn {
@@ -883,31 +897,32 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 12px 16px;
+      padding: 13px 16px;
       border-radius: 14px;
       border: 1.5px solid var(--border-color);
-      background: #f8fafc;
+      background: #ffffff;
       cursor: pointer;
       text-align: left;
       transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
       position: relative;
+      box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
     }
 
     .platform-card-btn:hover {
       background: #ffffff;
-      border-color: #cbd5e1;
+      border-color: #94a3b8;
       transform: translateY(-2px);
-      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
     }
 
     .platform-icon-circle {
-      width: 40px;
-      height: 40px;
+      width: 42px;
+      height: 42px;
       border-radius: 12px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       flex-shrink: 0;
       transition: transform 0.2s;
     }
@@ -917,48 +932,58 @@
     }
 
     /* Colores por plataforma */
-    .icon-restodata { background: #fef3c7; color: #d97706; }
+    .icon-restodata { background: #fef3c7; color: #b45309; }
     .icon-piscicola { background: #e0f2fe; color: #0284c7; }
     .icon-procesos { background: #f3e8ff; color: #7c3aed; }
     .icon-enrutador { background: #dbeafe; color: #2563eb; }
-    .icon-monitor { background: #fae8ff; color: #a855f7; }
+    .icon-monitor { background: #fae8ff; color: #9333ea; }
 
     .platform-info {
       flex: 1;
     }
 
     .platform-name {
-      font-size: 0.95rem;
+      font-family: var(--font-heading);
+      font-size: 1.02rem;
       font-weight: 800;
-      color: var(--primary-navy);
+      color: #0f172a;
       margin-bottom: 2px;
       display: flex;
       align-items: center;
       gap: 6px;
+      letter-spacing: -0.2px;
     }
 
     .platform-sub {
-      font-size: 0.77rem;
-      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 0.82rem;
+      font-weight: 500;
+      color: #475569;
+      line-height: 1.35;
     }
 
     .arrow-indicator {
       color: #94a3b8;
-      font-size: 0.9rem;
-      transition: transform 0.2s;
+      font-size: 0.95rem;
+      transition: transform 0.2s, color 0.2s;
     }
 
     .platform-card-btn:hover .arrow-indicator {
-      color: var(--primary-navy);
+      color: #0f172a;
       transform: translateX(3px);
     }
 
     /* Paso 2: Formulario de Login */
+    .login-step-wrapper {
+      max-width: 460px;
+      margin: 0 auto;
+    }
+
     .login-header-box {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
       padding-bottom: 12px;
       border-bottom: 1px dashed var(--border-color);
     }
@@ -966,75 +991,83 @@
     .back-btn {
       background: transparent;
       border: none;
-      color: var(--accent-gold);
-      font-size: 0.82rem;
+      color: #b45309;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
       font-weight: 700;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 8px;
+      padding: 5px 10px;
       border-radius: 6px;
       transition: all 0.2s;
     }
 
     .back-btn:hover {
       background: #fef3c7;
-      color: #b45309;
+      color: #92400e;
     }
 
     .active-platform-pill {
       display: inline-flex;
       align-items: center;
       gap: 6px;
-      padding: 4px 10px;
+      padding: 5px 12px;
       border-radius: 9999px;
-      font-size: 0.73rem;
-      font-weight: 800;
+      font-family: var(--font-body);
+      font-size: 0.76rem;
+      font-weight: 700;
       background: #f1f5f9;
-      color: var(--primary-navy);
+      color: #0f172a;
+      border: 1px solid #e2e8f0;
     }
 
     .login-title-row {
       display: flex;
       align-items: center;
-      gap: 12px;
-      margin-bottom: 18px;
+      gap: 14px;
+      margin-bottom: 20px;
     }
 
     .login-app-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       flex-shrink: 0;
     }
 
     .login-title-text h4 {
-      font-size: 1.1rem;
-      font-weight: 900;
-      color: var(--primary-navy);
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: #0f172a;
       font-family: var(--font-heading);
+      letter-spacing: -0.3px;
     }
 
     .login-title-text p {
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #475569;
+      margin-top: 2px;
     }
 
     .login-form-group {
-      margin-bottom: 15px;
+      margin-bottom: 16px;
       text-align: left;
     }
 
     .login-form-label {
       display: block;
-      font-size: 0.82rem;
+      font-family: var(--font-body);
+      font-size: 0.85rem;
       font-weight: 700;
-      color: var(--text-body);
+      color: #1e293b;
       margin-bottom: 6px;
     }
 
@@ -1047,26 +1080,27 @@
     .login-input-icon {
       position: absolute;
       left: 14px;
-      color: #94a3b8;
-      font-size: 0.95rem;
+      color: #64748b;
+      font-size: 1rem;
     }
 
     .login-form-input {
       width: 100%;
-      padding: 11px 14px 11px 42px;
+      padding: 12px 14px 12px 42px;
       border: 1.5px solid var(--border-color);
       border-radius: 10px;
-      font-size: 0.92rem;
+      font-size: 0.95rem;
+      font-weight: 500;
       font-family: var(--font-body);
-      color: var(--text-main);
+      color: #0f172a;
       background: #ffffff;
       outline: none;
       transition: all 0.2s;
     }
 
     .login-form-input:focus {
-      border-color: var(--accent-gold);
-      box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.15);
+      border-color: #d97706;
+      box-shadow: 0 0 0 3px rgba(217, 119, 6, 0.15);
     }
 
     .toggle-pass-btn {
@@ -1074,44 +1108,47 @@
       right: 12px;
       background: transparent;
       border: none;
-      color: #94a3b8;
+      color: #64748b;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 1rem;
       padding: 4px;
     }
 
     .toggle-pass-btn:hover {
-      color: var(--text-main);
+      color: #0f172a;
     }
 
     .login-form-options {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      margin-bottom: 18px;
-      font-size: 0.8rem;
+      margin-bottom: 20px;
+      font-size: 0.82rem;
     }
 
     .remember-me {
       display: flex;
       align-items: center;
       gap: 6px;
-      color: var(--text-body);
+      color: #334155;
+      font-weight: 500;
       cursor: pointer;
     }
 
     .remember-me input {
-      accent-color: var(--accent-gold);
+      accent-color: #d97706;
       cursor: pointer;
+      width: 15px;
+      height: 15px;
     }
 
     .login-submit-btn {
       width: 100%;
-      padding: 13px 20px;
-      border-radius: 10px;
+      padding: 14px 20px;
+      border-radius: 12px;
       border: none;
       font-family: var(--font-heading);
-      font-size: 0.95rem;
+      font-size: 1rem;
       font-weight: 800;
       cursor: pointer;
       display: flex;
@@ -1120,12 +1157,12 @@
       gap: 8px;
       transition: all 0.2s ease;
       color: #ffffff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
     }
 
     .login-submit-btn:hover {
       transform: translateY(-2px);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.2);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
     }
 
     .btn-theme-restodata { background: linear-gradient(135deg, #f59e0b, #d97706); color: #0b1528 !important; }
@@ -1135,14 +1172,14 @@
     .btn-theme-monitor { background: linear-gradient(135deg, #9333ea, #7e22ce); }
 
     .direct-link-row {
-      margin-top: 14px;
+      margin-top: 16px;
       text-align: center;
-      font-size: 0.78rem;
-      color: var(--text-muted);
+      font-size: 0.82rem;
+      color: #475569;
     }
 
     .direct-link-row a {
-      color: var(--accent-gold);
+      color: #b45309;
       text-decoration: none;
       font-weight: 700;
     }
@@ -1159,7 +1196,8 @@
       border-radius: 10px;
       padding: 12px;
       margin-top: 14px;
-      font-size: 0.85rem;
+      font-size: 0.88rem;
+      font-weight: 500;
       text-align: center;
     }
 
@@ -1170,20 +1208,21 @@
 
     /* Footer del Modal */
     .modal-bottom-info {
-      padding: 12px 22px;
+      padding: 14px 26px;
       background: #f8fafc;
       border-top: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.74rem;
-      color: var(--text-muted);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: #475569;
     }
 
     .modal-bottom-info span {
       display: flex;
       align-items: center;
-      gap: 5px;
+      gap: 6px;
     }
 
     .modal-bottom-info a {
@@ -1192,7 +1231,45 @@
       font-weight: 700;
       display: flex;
       align-items: center;
-      gap: 4px;
+      gap: 5px;
+    }
+
+    @media (max-width: 680px) {
+      .modal-content {
+        max-width: 95%;
+        border-radius: 20px;
+      }
+      .modal-top-bar {
+        padding: 14px 18px;
+      }
+      .modal-body {
+        padding: 18px 16px;
+      }
+      .platform-cards-list {
+        grid-template-columns: 1fr;
+        gap: 9px;
+      }
+      .platform-card-btn.full-span {
+        grid-column: auto;
+      }
+      .platform-card-btn {
+        padding: 10px 14px;
+        gap: 12px;
+      }
+      .platform-icon-circle {
+        width: 38px;
+        height: 38px;
+        font-size: 1.15rem;
+      }
+      .platform-name {
+        font-size: 0.96rem;
+      }
+      .platform-sub {
+        font-size: 0.78rem;
+      }
+      .modal-bottom-info {
+        padding: 12px 18px;
+      }
     }
 
     /* Floating WhatsApp */
@@ -1995,13 +2072,13 @@
             </button>
 
             <!-- 5. Servidor POS (DC Monitor) -->
-            <button type="button" class="platform-card-btn" onclick="selectPlatform('monitor')">
+            <button type="button" class="platform-card-btn full-span" onclick="selectPlatform('monitor')">
               <div class="platform-icon-circle icon-monitor">
                 <i class="fa-solid fa-tower-broadcast"></i>
               </div>
               <div class="platform-info">
                 <div class="platform-name">Servidor POS (DC Monitor)</div>
-                <div class="platform-sub">Agente POS & Conectividad en Vivo</div>
+                <div class="platform-sub">Agente POS & Conectividad en Tiempo Real</div>
               </div>
               <i class="fa-solid fa-chevron-right arrow-indicator"></i>
             </button>
@@ -2010,6 +2087,7 @@
 
         <!-- ==================== PASO 2: FORMULARIO DE LOGIN ==================== -->
         <div id="stepLogin" class="step-view hidden">
+          <div class="login-step-wrapper">
           
           <div class="login-header-box">
             <button type="button" class="back-btn" onclick="goBackToStep1()">
@@ -2078,7 +2156,8 @@
             <a href="#" id="directUrlLink" target="_blank">Abrir en enlace directo →</a>
           </div>
 
-        </div>
+          </div><!-- /.login-step-wrapper -->
+        </div><!-- /#stepLogin -->
 
       </div>
 
